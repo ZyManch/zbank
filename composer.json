@@ -1,0 +1,31 @@
+{
+    "name": "zymanch/zbank",
+    "description": "zBank",
+    "version":"1.0-dev",
+
+    "require": {
+        "php": ">=5.3.2",
+        "yiisoft/yii": "dev-master",
+        "yiiext/migrate-command": "dev-master",
+        "pentium10/yii-remember-filters-gridview":"dev-master"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "components": "./"
+        },
+        "classmap": [
+            "./protected/modules"
+        ]
+    },
+    "repositories": [
+        {
+            "type":"composer",
+            "url": "http://packages.phundament.com"
+        },
+        {
+            "type":"composer",
+            "url": "https://packagist.org"
+        }
+    ]
+}
