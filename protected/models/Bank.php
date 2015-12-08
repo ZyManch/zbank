@@ -7,5 +7,17 @@
 */
 class Bank extends CBank {
 
+    protected function instantiate($attributes) {
+        if ($attributes['name']) {
+                $class = explode('_',$attributes['name']);
+                $class = implode('',array_map('ucfirst',$class)).'Bank';
+            return new $class(null);
+        }
+        return new Bank(null);
+    }
 
+
+    public function updateBankInformation() {
+        return false;
+    }
 }

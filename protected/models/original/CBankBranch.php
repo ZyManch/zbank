@@ -8,8 +8,10 @@
     * @property string $bank_id
     * @property string $city_id
     * @property string $address
+    * @property string $phones
     * @property string $latitude
     * @property string $longitude
+    * @property string $working_hours
     * @property string $status
     *
     * The followings are the available model relations:
@@ -24,9 +26,10 @@ class CBankBranch extends ActiveRecord {
 
     public function rules()	{
         return array(
-            array('bank_id, city_id, address, latitude, longitude', 'required'),
+            array('bank_id, city_id, address, phones, latitude, longitude', 'required'),
 			array('bank_id, city_id, latitude, longitude', 'length', 'max'=>10),
-			array('status', 'length', 'max'=>7)        );
+			array('status', 'length', 'max'=>7),
+			array('working_hours', 'safe')        );
     }
 
     /**
@@ -45,8 +48,10 @@ class CBankBranch extends ActiveRecord {
             'bank_id' => 'Bank',
             'city_id' => 'City',
             'address' => 'Address',
+            'phones' => 'Phones',
             'latitude' => 'Latitude',
             'longitude' => 'Longitude',
+            'working_hours' => 'Working Hours',
             'status' => 'Status',
         );
     }

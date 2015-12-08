@@ -7,9 +7,6 @@
  */
 class BankCommand extends CConsoleCommand {
 
-    public $aliases = array(
-
-    );
 
     public function run($args) {
         $oldBanks = $this->_getOldBanks();

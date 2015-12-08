@@ -20,6 +20,7 @@ return array(
         'application.components.*',
         'application.controllers.*',
         'application.behaviors.*',
+        'application.banks.*',
     ),
 
     // application components
