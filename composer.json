@@ -15,7 +15,7 @@
             "components": "./"
         },
         "classmap": [
-            "./protected/modules"
+
         ]
     },
     "repositories": [

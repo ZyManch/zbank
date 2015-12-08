@@ -1,0 +1,8 @@
+{
+    "db": {
+        "hostname": "zbank.dev",
+        "database": "zbank",
+        "username":"root",
+        "password":""
+    }
+}
