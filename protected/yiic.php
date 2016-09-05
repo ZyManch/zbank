@@ -1,5 +1,11 @@
 <?php
 
+function p($text) {
+    if (!is_string($text)) {
+        $text = var_export($text,1);
+    }
+    print iconv('UTF-8','CP866',$text);
+}
 $securePath = dirname(__FILE__).'/../config.secure.json';
 if (!file_exists($securePath)) {
     print 'Secure file is missed';

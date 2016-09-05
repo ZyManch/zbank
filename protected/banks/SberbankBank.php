@@ -8,23 +8,47 @@
 class SberbankBank extends Bank {
 
 
-    public function updateBankInformation() {
+    public function updateBankBranch() {
         $file = rtrim($this->url,'/').'/common/img/uploaded/files/branches.xls';
-        $objPHPExcel = PHPExcel_IOFactory::load($file);
-        $sheet = $objPHPExcel->
-            getActiveSheet();
-        $branches = array();
-        $branches[] = array(
-            $sheet->getCellByColumnAndRow(2,5),
-            $sheet->getCellByColumnAndRow(9,5),
-            $sheet->getCellByColumnAndRow(10,5),
-            $sheet->getCellByColumnAndRow(11,5),
-            $sheet->getCellByColumnAndRow(12,5),
-            $sheet->getCellByColumnAndRow(13,5),
-            $sheet->getCellByColumnAndRow(14,5),
-        );
-        var_dump($branches);
+        $detector = new BranchDetectorXls($this, $file);
+        $detector->
+            setStartFrom(5)->
+            setNameColumn(2)->
+            setCityColumn(10)->
+            setStreetColumn(11)->
+            setHouseColumn(12)->
+            setPhonesColumn(13)->
+            setWorkColumn(15)->
+            run();
+
     }
+
+    public function updateBankCurrency() {
+        $params = array(
+            'cbrf' => 1,
+            'inf_block' => 111,
+            'quotes_for' => '',
+            'version' => 0,
+            'site' => 1,
+            'date' => date('d.m.Y'),
+            'payment' => 'cash',
+            'person' => 'natural'
+        );
+        $url = 'http://data.sberbank.ru/common/js/quote_table.php?'.http_build_query(
+            $params
+        );
+        $detector = new CurrencyDetectorHtml($this, $url);
+        $detector->
+            setRowSeparator('<tr>')->
+            setColSeparator('</td>')->
+            setNameColumn(0)->
+            setSignColumn(1)->
+            setCountColumn(2)->
+            setBuyColumn(3)->
+            setSellColumn(4)->
+            run();
+    }
+
 
 
 }

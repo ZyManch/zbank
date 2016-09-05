@@ -18,6 +18,8 @@ return array(
         'application.models.*',
         'application.forms.*',
         'application.components.*',
+        'application.components.branchDetector.*',
+        'application.components.currencyDetector.*',
         'application.controllers.*',
         'application.behaviors.*',
         'application.banks.*',
@@ -38,7 +40,7 @@ return array(
         'cache'=>array(
             'class'=>'system.caching.CFileCache',
             'directoryLevel' =>1,
-            'cachePath' => dirname(__FILE__).'/../../cache/'.$secureName
+            'cachePath' => dirname(__FILE__).'/../../cache/'
         ),
         'loader' => array(
             'class'=>'Loader',
@@ -51,6 +53,10 @@ return array(
             'loginUrl'=>array('user/login'),
             'allowAutoLogin'=>true,
         ),
+        'geocoder' => array(
+            'class' => 'Geocoder',
+            'developer_key' => ''
+        )
     ),
     'params'=>array(
         'salt' => 'salt',

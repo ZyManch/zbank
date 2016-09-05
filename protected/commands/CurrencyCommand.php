@@ -5,13 +5,13 @@
  * Date: 28.06.14
  * Time: 21:27
  */
-class BranchCommand extends CConsoleCommand {
+class CurrencyCommand extends CConsoleCommand {
 
 
     public function actionIndex($bank = null) {
         foreach ($this->_getBanks($bank) as $bank) {
             p('Process "'.$bank->name.'" bank:');
-            $bank->updateBankBranch();
+            $bank->updateBankCurrency();
             print "ok\n";
         }
     }

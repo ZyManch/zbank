@@ -5,6 +5,7 @@
 *
 * The followings are the available columns in table 'bank_branch':
     * @property string $id
+    * @property string $name
     * @property string $bank_id
     * @property string $city_id
     * @property string $address
@@ -27,6 +28,7 @@ class CBankBranch extends ActiveRecord {
     public function rules()	{
         return array(
             array('bank_id, city_id, address, phones, latitude, longitude', 'required'),
+			array('name', 'length', 'max'=>150),
 			array('bank_id, city_id, latitude, longitude', 'length', 'max'=>10),
 			array('status', 'length', 'max'=>7),
 			array('working_hours', 'safe')        );
@@ -45,6 +47,7 @@ class CBankBranch extends ActiveRecord {
     public function attributeLabels() {
         return array(
             'id' => 'ID',
+            'name' => 'Name',
             'bank_id' => 'Bank',
             'city_id' => 'City',
             'address' => 'Address',

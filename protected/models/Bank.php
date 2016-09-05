@@ -16,8 +16,21 @@ class Bank extends CBank {
         return new Bank(null);
     }
 
+    protected function _extendedRelations()	{
+        return array(
+            'bankCurrencies' => array(self::HAS_MANY, 'BankCurrency', 'bank_id', 'index'=>'currency_id'),
+        );
+    }
 
-    public function updateBankInformation() {
+    public function updateBankBranch() {
+        return false;
+    }
+
+    public function updateBankCurrency() {
+        if ($this->url) {
+            $html = file_get_contents($this->url);
+
+        }
         return false;
     }
 }
